@@ -1,17 +1,30 @@
-* { box-sizing:border-box; margin:0; padding:0; }
+* {
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-html { height:100%; width:100%; }
+html {
+    height:100%;
+    width:100%;
+}
 
 nav {
     background-color: #1e1e1e;
 }
 
 body {
+    background-color: #4b4b4b !important ;
+    height:100%;
+    width:100%;
+}
 
-  background-color: #4b4b4b !important ;
-  height:100%;
-  width:100%;
+canvas {
+    image-rendering:pixelated;
+}
 
+.noBackground {
+    background-color: transparent !important;
 }
 
 #settingsContainer {
@@ -19,4 +32,3 @@ body {
     border-radius: 5px;
 }
 
-canvas { image-rendering:pixelated; }

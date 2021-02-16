@@ -7,153 +7,144 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-  <nav class="nav mb-2">
-    <a class="nav-link text-white" href="#">Tile map editor</a>
-  </nav>
-      <div class="row">
-        <div class="col-4">
-          <div class="container ml-2 p-2" id="settingsContainer">
-<div class="accordion" id="accordionSettings">
-  <div class="card border-0" style="background-color: transparent;">
-    <div class="card-header bg-primary m-0 p-1 rounded" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-block text-left text-white" type="button" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
-          Settings
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseSettings" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionSettings">
-      <div class="card-body" style="background-color: transparent">
-
-<div class="row pt-2">
-            <div class="col-12">
-          <div class="input-group">
-            <div class="custom-file">
-              <input type="file" accept=".jpg, .jpeg, .png" id="file-selector" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-              <label class="custom-file-label" for="inputGroupFile01">Upload tileset</label>
-            </div>
-          </div>
-        </div>
-          </div>
-<div class="row pt-2">
-            <div class="col-12">
-          <div class="input-group">
-            <div class="custom-file">
-              <input type="file" accept=".json" id="mapFileSelector" class="custom-file-input" id="inputGroupJsonMap" aria-describedby="inputGroupFileAddon01">
-              <label class="custom-file-label" for="inputGroupJsonMap">Import json map</label>
-            </div>
-          </div>
-        </div>
-          </div>
-          <div class="row text-center pt-2">
-            <div class="col-6">
-              <div class="input-group input-group-sm">
-                <input type="text" id="tile_map_x" placeholder="tile map x" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="15">
+    <nav class="nav mb-2">
+      <a class="nav-link text-white" href="#">Tile map editor</a>
+    </nav>
+    <div class="row">
+      <div class="col-4">
+        <div class="container ml-2 p-2" id="settingsContainer">
+          <div class="accordion" id="accordionSettings">
+            <div class="card border-0 noBackground">
+              <div class="card-header bg-primary m-0 p-1 rounded" id="headingOne">
+                <h2 class="mb-0">
+                <button class="btn btn-block text-left text-white" type="button" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
+                Settings
+                </button>
+                </h2>
               </div>
-            </div>
-            <div class="col-6">
-              <div class="input-group input-group-sm">
-                <input type="text" id="tile_map_y" placeholder="tile map y" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="15">
-              </div>
-            </div>
-          </div>
-          <div class="row text-center pt-2">
-            <div class="col-4">
-              <div class="input-group input-group-sm">
-                <input type="text" id="tile_set_x" placeholder="tile set x" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="6">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="input-group input-group-sm">
-                <input type="text" id="tile_set_y" placeholder="tile set y" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="10">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="input-group input-group-sm">
-                <input type="text" id="tile_size" placeholder="tile size" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="16">
-              </div>
-            </div>
-          </div>
-          <div class="row pt-2">
-            <div class="col-12">
-              <button type="button" id="saveSettings" class="btn btn-outline-primary">Save</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container ml-2 mt-2 p-2" id="settingsContainer">
-<div class="accordion" id="accordionTileSet">
-  <div class="card border-0" style="background-color: transparent;">
-    <div class="card-header bg-primary m-0 p-1 rounded" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-block text-left text-white" type="button" data-toggle="collapse" data-target="#collapseTileSet" aria-expanded="true" aria-controls="collapseTileSet">
-          Tile Set
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseTileSet" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionTileSet">
-      <div class="card-body" style="background-color: transparent">
-          <div class="row text-center p-2">
-            <div class="col-12">
-              <canvas id="tileSet"></canvas>
-            </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-          <div class="container ml-2 mt-2 p-2" id="settingsContainer">
-<div class="accordion" id="accordionExport">
-  <div class="card border-0" style="background-color: transparent;">
-    <div class="card-header bg-success m-0 p-1 rounded" id="headingExport">
-      <h2 class="mb-0">
-        <button class="btn btn-block text-left text-white" type="button" data-toggle="collapse" data-target="#collapseExport" aria-expanded="true" aria-controls="collapseExport">
-          Export
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseExport" class="collapse" aria-labelledby="headingExport" data-parent="#accordionExport">
-      <div class="card-body" style="background-color: transparent">
-          <div class="row text-center pt-2">
-            <div class="col-12">
-              <div class="input-group input-group-sm">
-                <input type="text" id="exportName" placeholder="map.json" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="map.json">
+              <div id="collapseSettings" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionSettings">
+                <div class="card-body noBackground">
+                  <div class="row pt-2">
+                    <div class="col-12">
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input type="file" accept=".jpg, .jpeg, .png" id="file-selector" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                          <label class="custom-file-label" for="inputGroupFile01">Upload tileset</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row pt-2">
+                    <div class="col-12">
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input type="file" accept=".json" id="mapFileSelector" class="custom-file-input" id="inputGroupJsonMap" aria-describedby="inputGroupFileAddon01">
+                          <label class="custom-file-label" for="inputGroupJsonMap">Import json map</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row text-center pt-2">
+                    <div class="col-6">
+                      <div class="input-group input-group-sm">
+                        <input type="text" id="tile_map_x" placeholder="tile map x" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="15">
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="input-group input-group-sm">
+                        <input type="text" id="tile_map_y" placeholder="tile map y" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="15">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row text-center pt-2">
+                    <div class="col-4">
+                      <div class="input-group input-group-sm">
+                        <input type="text" id="tile_set_x" placeholder="tile set x" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="6">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="input-group input-group-sm">
+                        <input type="text" id="tile_set_y" placeholder="tile set y" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="10">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="input-group input-group-sm">
+                        <input type="text" id="tile_size" placeholder="tile size" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="16">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row pt-2">
+                    <div class="col-12">
+                      <button type="button" id="saveSettings" class="btn btn-outline-primary">Save</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="row pt-2">
-            <div class="col-12">
-              <button type="button" id="exportButton" class="btn btn-outline-success">Export</button>
+        </div>
+        <div class="container ml-2 mt-2 p-2" id="settingsContainer">
+          <div class="accordion" id="accordionTileSet">
+            <div class="card border-0 noBackground">
+              <div class="card-header bg-primary m-0 p-1 rounded" id="headingOne">
+                <h2 class="mb-0">
+                <button class="btn btn-block text-left text-white" type="button" data-toggle="collapse" data-target="#collapseTileSet" aria-expanded="true" aria-controls="collapseTileSet">
+                Tile Set
+                </button>
+                </h2>
+              </div>
+              <div id="collapseTileSet" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionTileSet">
+                <div class="card-body noBackground">
+                  <div class="row text-center p-2">
+                    <div class="col-12">
+                      <canvas id="tileSet"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-        </div>
-        <div class="col-8 text-center">
-          <canvas id="tileMap"></canvas>
+        <div class="container ml-2 mt-2 p-2" id="settingsContainer">
+          <div class="accordion" id="accordionExport">
+            <div class="card border-0 noBackground">
+              <div class="card-header bg-success m-0 p-1 rounded" id="headingExport">
+                <h2 class="mb-0">
+                <button class="btn btn-block text-left text-white" type="button" data-toggle="collapse" data-target="#collapseExport" aria-expanded="true" aria-controls="collapseExport">
+                Export
+                </button>
+                </h2>
+              </div>
+              <div id="collapseExport" class="collapse" aria-labelledby="headingExport" data-parent="#accordionExport">
+                <div class="card-body noBackground">
+                  <div class="row text-center pt-2">
+                    <div class="col-12">
+                      <div class="input-group input-group-sm">
+                        <input type="text" id="exportName" placeholder="map.json" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="map.json">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row pt-2">
+                    <div class="col-12">
+                      <button type="button" id="exportButton" class="btn btn-outline-success">Export</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <div class="col-8 text-center">
+        <canvas id="tileMap"></canvas>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./src/js/controller.js"></script>
     <script type="text/javascript" src="./src/js/display.js"></script>
     <script type="text/javascript" src="./src/js/engine.js"></script>
     <script type="text/javascript" src="./src/js/game.js"></script>
     <script type="text/javascript" src="./src/js/main.js"></script>
-
   </body>
 </html>

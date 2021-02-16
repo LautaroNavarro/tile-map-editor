@@ -1,4 +1,3 @@
-
 class Game {
 
     map = [];
@@ -11,43 +10,47 @@ class Game {
     selectedTool = null;
     selectedTile = null;
 
-    exportMap (exportName) {
-      let element = document.createElement('a');
-      element.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify({'map': this.map})));
-      element.setAttribute('download', exportName);
+    exportMap(exportName) {
+        let element = document.createElement('a');
+        element.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify({
+            'map': this.map
+        })));
+        element.setAttribute('download', exportName);
 
-      element.style.display = 'none';
-      document.body.appendChild(element);
+        element.style.display = 'none';
+        document.body.appendChild(element);
 
-      element.click();
+        element.click();
 
-      document.body.removeChild(element);
+        document.body.removeChild(element);
     }
 
-    updateMap (mouse) {
+    updateMap(mouse) {
         this.map[(mouse.y * this.tilesX) + mouse.x] = `${this.selectedTile.x}-${this.selectedTile.y}`
     }
 
-    getWidth () {
+    getWidth() {
         return this.tileSize * this.tilesX;
     }
 
-    getHeight () {
+    getHeight() {
         return this.tileSize * this.tilesY;
     }
 
-    getTileSetWidth () {
+    getTileSetWidth() {
         return this.tileSize * this.tileSetY;
     }
 
-    getTileSetHeight () {
+    getTileSetHeight() {
         return this.tileSize * this.tileSetX;
     }
 
-    updateSettings (settings, callback) {
+    updateSettings(settings, callback) {
         debugger;
         let img = new Image();
-        img.onload = () => {callback(img)}
+        img.onload = () => {
+            callback(img)
+        }
         img.src = URL.createObjectURL(settings.fileSelector);
         this.tileSetImage = img;
         this.tilesX = parseInt(settings.tileMapX);
@@ -57,8 +60,8 @@ class Game {
             this.map = settings.map;
         } else {
             this.map = [];
-            for(let x = 0, lengthX = this.tilesX; x < lengthX; x++){
-                for(let y = 0, lengthY = this.tilesY; y < lengthY; y++){
+            for (let x = 0, lengthX = this.tilesX; x < lengthX; x++) {
+                for (let y = 0, lengthY = this.tilesY; y < lengthY; y++) {
                     this.map.push(null);
                 }
             }
@@ -68,7 +71,7 @@ class Game {
         this.tileSize = parseInt(settings.tileSize);
     }
 
-    update () {
+    update() {
         // TODO: Implement
     }
 }
