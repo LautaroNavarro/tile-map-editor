@@ -1,0 +1,22 @@
+* { box-sizing:border-box; margin:0; padding:0; }
+
+html { height:100%; width:100%; }
+
+nav {
+    background-color: #1e1e1e;
+}
+
+body {
+
+  background-color: #4b4b4b !important ;
+  height:100%;
+  width:100%;
+
+}
+
+#settingsContainer {
+    background-color: #2a2a2a;
+    border-radius: 5px;
+}
+
+canvas { image-rendering:pixelated; }
