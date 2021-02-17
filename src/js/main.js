@@ -4,47 +4,47 @@ window.addEventListener("load", function(event) {
 
     let setWidthAndHeight = () => {
       // Recalculate width and height for both canvas
-      display.buffer.canvas.height = game.getHeight();
-      display.buffer.canvas.width = game.getWidth();
+      mapDisplay.buffer.canvas.height = mapCreator.getHeight();
+      mapDisplay.buffer.canvas.width = mapCreator.getWidth();
 
-      displayTileSet.buffer.canvas.height = game.getTileSetHeight();
-      displayTileSet.buffer.canvas.width = game.getTileSetWidth();
+      tileSetDisplay.buffer.canvas.height = mapCreator.getTileSetHeight();
+      tileSetDisplay.buffer.canvas.width = mapCreator.getTileSetWidth();
     }
 
     let resize = () => {
         // Handle resize event
-        display.resize(document.documentElement.clientWidth * 0.8, document.documentElement.clientHeight * 0.8, game.getHeight() / game.getWidth());
-        displayTileSet.resize(document.documentElement.clientWidth * 0.28, document.documentElement.clientHeight * 0.28, game.getTileSetHeight() / game.getTileSetWidth());
-        displayTileSet.render();
-        display.render();
+        mapDisplay.resize(document.documentElement.clientWidth * 0.8, document.documentElement.clientHeight * 0.8, mapCreator.getHeight() / mapCreator.getWidth());
+        tileSetDisplay.resize(document.documentElement.clientWidth * 0.28, document.documentElement.clientHeight * 0.28, mapCreator.getTileSetHeight() / mapCreator.getTileSetWidth());
+        tileSetDisplay.render();
+        mapDisplay.render();
 
     };
 
     let render = () => {
         // Render tile set & tile map
-        display.renderColor('WHITE');
-        displayTileSet.renderColor('WHITE');
+        mapDisplay.renderColor('WHITE');
+        tileSetDisplay.renderColor('WHITE');
 
-        if (game.tileSetImage) {
-            display.drawMap(game.tileSetImage, game.map, game.tilesY);
-            displayTileSet.drawTileSet(game.tileSetImage);
+        if (mapCreator.tileSetImage) {
+            mapDisplay.drawMap(mapCreator.tileSetImage, mapCreator.map, mapCreator.tilesY);
+            tileSetDisplay.drawTileSet(mapCreator.tileSetImage);
         }
 
-        if (game.selectedTile) {
-            displayTileSet.renderHoverBox(game.selectedTile, 'rgba(37, 128, 206, 0.5)');
+        if (mapCreator.selectedTile) {
+            tileSetDisplay.renderHoverBox(mapCreator.selectedTile, 'rgba(37, 128, 206, 0.5)');
         }
 
-        display.drawGride(game.tilesY, game.tilesX, game.tileSize);
-        displayTileSet.drawGride(game.tileSetX, game.tileSetY, game.tileSize);
+        mapDisplay.drawGride(mapCreator.tilesY, mapCreator.tilesX, mapCreator.tileSize);
+        tileSetDisplay.drawGride(mapCreator.tileSetX, mapCreator.tileSetY, mapCreator.tileSize);
 
-        display.render();
-        displayTileSet.render();
+        mapDisplay.render();
+        tileSetDisplay.render();
     };
 
     let controller = new Controller();
-    let display = new Display(document.getElementById("tileMap"));
-    let displayTileSet = new Display(document.getElementById("tileSet"));
-    let game = new Game();
+    let mapDisplay = new Display(document.getElementById("tileMap"));
+    let tileSetDisplay = new Display(document.getElementById("tileSet"));
+    let mapCreator = new MapCreator();
 
     window.addEventListener("resize", resize);
     setWidthAndHeight();
@@ -52,51 +52,51 @@ window.addEventListener("load", function(event) {
     render();
 
     // Render hover in tile set
-    displayTileSet.context.canvas.addEventListener('mousemove',
+    tileSetDisplay.context.canvas.addEventListener('mousemove',
         (e) => {
             render();
-            displayTileSet.renderHoverBox(
-                controller.handleMouseMove(e, displayTileSet.context.canvas, displayTileSet.buffer.canvas),
+            tileSetDisplay.renderHoverBox(
+                controller.handleMouseMove(e, tileSetDisplay.context.canvas, tileSetDisplay.buffer.canvas),
                 'rgba(0, 0, 0, 0.5)'
             );
-            displayTileSet.render();
+            tileSetDisplay.render();
         }
     );
 
     // Rerender to erase hover in tile set
-    displayTileSet.context.canvas.addEventListener("mouseout", (e) => {render();});
+    tileSetDisplay.context.canvas.addEventListener("mouseout", (e) => {render();});
 
     // Tile selection
-    displayTileSet.context.canvas.addEventListener('click',
+    tileSetDisplay.context.canvas.addEventListener('click',
         (e) => {
-            game.selectedTile = controller.handleMouseClick(e, displayTileSet.context.canvas, displayTileSet.buffer.canvas);
+            mapCreator.selectedTile = controller.handleMouseClick(e, tileSetDisplay.context.canvas, tileSetDisplay.buffer.canvas);
             render();
         }
     );
 
     // Draw ghost tile inside map
-    display.context.canvas.addEventListener('mousemove',
+    mapDisplay.context.canvas.addEventListener('mousemove',
         (e) => {
-            if (game.selectedTile && game.selectedTool == 'PEN') {
+            if (mapCreator.selectedTile && mapCreator.selectedTool == 'PEN') {
                 render();
-                display.drawTile(
-                    game.tileSetImage,
-                    controller.handleMouseMove(e, display.context.canvas, display.buffer.canvas),
-                    game.selectedTile.x,
-                    game.selectedTile.y,
+                mapDisplay.drawTile(
+                    mapCreator.tileSetImage,
+                    controller.handleMouseMove(e, mapDisplay.context.canvas, mapDisplay.buffer.canvas),
+                    mapCreator.selectedTile.x,
+                    mapCreator.selectedTile.y,
                 );
-                display.render();
+                mapDisplay.render();
             }
         }
     );
 
     // Rerender if mouse is out to erase ghost tile
-    display.context.canvas.addEventListener("mouseout", (e) => {render();});
+    mapDisplay.context.canvas.addEventListener("mouseout", (e) => {render();});
 
     // Add the selected tile to the selected map position
-    display.context.canvas.addEventListener('click', (e) => {
-      game.updateMap(
-          controller.handleMouseMove(e, display.context.canvas, display.buffer.canvas),
+    mapDisplay.context.canvas.addEventListener('click', (e) => {
+      mapCreator.updateMap(
+          controller.handleMouseMove(e, mapDisplay.context.canvas, mapDisplay.buffer.canvas),
       );
       render();
     });
@@ -105,8 +105,8 @@ window.addEventListener("load", function(event) {
     const saveSettings = document.getElementById('saveSettings');
     saveSettings.addEventListener('click', async() => {
         let settings = await controller.processSettings();
-        game.updateSettings(settings, (img) => {
-            displayTileSet.drawTileSet(img);
+        mapCreator.updateSettings(settings, (img) => {
+            tileSetDisplay.drawTileSet(img);
             render();
         });
         // Recalculate height and width since this can be changed
@@ -120,14 +120,14 @@ window.addEventListener("load", function(event) {
 
     // Pen tool button
     penButton.addEventListener('click', () => {
-        game.selectPen();
+        mapCreator.selectPen();
         penButton.classList = "btn btn-dark active";
         eraserButton.classList = "btn btn-dark";
     });
 
     // Eraser tool button
     eraserButton.addEventListener('click', () => {
-        game.selectEraser();
+        mapCreator.selectEraser();
         penButton.classList = "btn btn-dark";
         eraserButton.classList = "btn btn-dark active";
     });
@@ -136,7 +136,7 @@ window.addEventListener("load", function(event) {
     const exportButton = document.getElementById('exportButton');
     exportButton.addEventListener('click', () => {
         let exportName = controller.getExportName();
-        game.exportMap(exportName);
+        mapCreator.exportMap(exportName);
     });
 
 });

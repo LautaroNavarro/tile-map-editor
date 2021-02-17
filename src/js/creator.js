@@ -1,4 +1,4 @@
-class Game {
+class MapCreator {
 
     map = [];
     tilesX = 15;
