@@ -26,7 +26,7 @@ window.addEventListener("load", function(event) {
         tileSetDisplay.renderColor('WHITE');
 
         if (mapCreator.tileSetImage) {
-            mapDisplay.drawMap(mapCreator.tileSetImage, mapCreator.map, mapCreator.tilesY);
+            mapDisplay.drawMap(mapCreator.tileSetImage, mapCreator.map, mapCreator.tilesX);
             tileSetDisplay.drawTileSet(mapCreator.tileSetImage);
         }
 
@@ -100,7 +100,7 @@ window.addEventListener("load", function(event) {
     // Add the selected tile to the selected map position
     mapDisplay.context.canvas.addEventListener('click', (e) => {
         mapCreator.updateMap(
-            controller.handleMouseMove(e, mapDisplay.context.canvas, mapDisplay.buffer.canvas),
+            controller.handleMouseClick(e, mapDisplay.context.canvas, mapDisplay.buffer.canvas),
         );
         render();
     });

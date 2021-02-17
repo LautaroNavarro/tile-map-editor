@@ -40,7 +40,6 @@
 
          let xPosition = Math.floor(mouseX / 16);
          let yPosition = Math.floor(mouseY / 16);
-
          return {
              'x': xPosition,
              'y': yPosition
