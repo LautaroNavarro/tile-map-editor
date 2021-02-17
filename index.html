@@ -7,140 +7,75 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <div class="wrapper">
-      <nav class="nav mb-2">
-        <a class="nav-link text-white darkBackground" href="#">Tile map editor</a>
-      </nav>
-      <div class="row">
-        <div class="col-4">
-          <div class="container ml-2 p-2" id="settingsContainer">
-            <div class="accordion" id="accordionSettings">
-              <div class="card border-0 noBackground">
-                <div class="card-header bg-primary m-0 p-1 rounded" id="headingOne">
-                  <h2 class="mb-0">
-                  <button class="btn btn-block text-left text-white" type="button" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
-                  Settings
-                  </button>
-                  </h2>
-                </div>
-                <div id="collapseSettings" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionSettings">
-                  <div class="card-body noBackground">
-                    <div class="row pt-2">
-                      <div class="col-12">
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" accept=".jpg, .jpeg, .png" id="file-selector" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                            <label class="custom-file-label" for="inputGroupFile01">Upload tileset</label>
-                          </div>
+    <nav class="nav mb-2">
+      <a class="nav-link text-white darkBackground" href="#">Tile map editor</a>
+    </nav>
+    <div class="row">
+      <div class="col-4">
+        <div class="container ml-2 p-2" id="settingsContainer">
+          <div class="accordion" id="accordionSettings">
+            <div class="card border-0 noBackground">
+              <div class="card-header bg-primary m-0 p-1 rounded" id="headingOne">
+                <h2 class="mb-0">
+                <button class="btn btn-block text-left text-white" type="button" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
+                Settings
+                </button>
+                </h2>
+              </div>
+              <div id="collapseSettings" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionSettings">
+                <div class="card-body noBackground">
+                  <div class="row pt-2">
+                    <div class="col-12">
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input type="file" accept=".jpg, .jpeg, .png" id="file-selector" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                          <label class="custom-file-label" for="inputGroupFile01">Upload tileset</label>
                         </div>
-                      </div>
-                    </div>
-                    <div class="row pt-2">
-                      <div class="col-12">
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" accept=".json" id="mapFileSelector" class="custom-file-input" id="inputGroupJsonMap" aria-describedby="inputGroupFileAddon01">
-                            <label class="custom-file-label" for="inputGroupJsonMap">Import json map</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row text-center pt-2">
-                      <div class="col-6">
-                        <div class="input-group input-group-sm">
-                          <input type="text" id="tile_map_x" placeholder="tile map x" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="15">
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="input-group input-group-sm">
-                          <input type="text" id="tile_map_y" placeholder="tile map y" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="15">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row text-center pt-2">
-                      <div class="col-4">
-                        <div class="input-group input-group-sm">
-                          <input type="text" id="tile_set_x" placeholder="tile set x" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="6">
-                        </div>
-                      </div>
-                      <div class="col-4">
-                        <div class="input-group input-group-sm">
-                          <input type="text" id="tile_set_y" placeholder="tile set y" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="10">
-                        </div>
-                      </div>
-                      <div class="col-4">
-                        <div class="input-group input-group-sm">
-                          <input type="text" id="tile_size" placeholder="tile size" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="16">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row pt-2">
-                      <div class="col-12">
-                        <button type="button" id="saveSettings" class="btn btn-outline-primary">Save</button>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="container ml-2 mt-2 p-2" id="settingsContainer">
-            <div class="accordion" id="accordionTileSet">
-              <div class="card border-0 noBackground">
-                <div class="card-header bg-primary m-0 p-1 rounded" id="headingOne">
-                  <h2 class="mb-0">
-                  <button class="btn btn-block text-left text-white" type="button" data-toggle="collapse" data-target="#collapseTileSet" aria-expanded="true" aria-controls="collapseTileSet">
-                  Tile Set
-                  </button>
-                  </h2>
-                </div>
-                <div id="collapseTileSet" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionTileSet">
-                  <div class="card-body noBackground">
-                    <div class="row text-center p-2">
-                      <div class="col-12">
-                        <canvas id="tileSet"></canvas>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="container ml-2 mt-2 p-2" id="settingsContainer">
-            <button type="button" class="btn btn-dark active" id="penButton">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pen" viewBox="0 0 16 16">
-              <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
-            </svg>
-            </button>
-            <button type="button" class="btn btn-dark" id="eraserButton">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-eraser" viewBox="0 0 16 16">
-              <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414l-3.879-3.879zM8.746 13.547L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
-            </svg>
-            </button>
-          </div>
-          <div class="container ml-2 mt-2 p-2" id="settingsContainer">
-            <div class="accordion" id="accordionExport">
-              <div class="card border-0 noBackground">
-                <div class="card-header bg-success m-0 p-1 rounded" id="headingExport">
-                  <h2 class="mb-0">
-                  <button class="btn btn-block text-left text-white" type="button" data-toggle="collapse" data-target="#collapseExport" aria-expanded="true" aria-controls="collapseExport">
-                  Export
-                  </button>
-                  </h2>
-                </div>
-                <div id="collapseExport" class="collapse" aria-labelledby="headingExport" data-parent="#accordionExport">
-                  <div class="card-body noBackground">
-                    <div class="row text-center pt-2">
-                      <div class="col-12">
-                        <div class="input-group input-group-sm">
-                          <input type="text" id="exportName" placeholder="map.json" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="map.json">
+                  <div class="row pt-2">
+                    <div class="col-12">
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input type="file" accept=".json" id="mapFileSelector" class="custom-file-input" id="inputGroupJsonMap" aria-describedby="inputGroupFileAddon01">
+                          <label class="custom-file-label" for="inputGroupJsonMap">Import json map</label>
                         </div>
                       </div>
                     </div>
-                    <div class="row pt-2">
-                      <div class="col-12">
-                        <button type="button" id="exportButton" class="btn btn-outline-success">Export</button>
+                  </div>
+                  <div class="row text-center pt-2">
+                    <div class="col-6">
+                      <div class="input-group input-group-sm">
+                        <input type="text" id="tile_map_x" placeholder="tile map x" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="15">
                       </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="input-group input-group-sm">
+                        <input type="text" id="tile_map_y" placeholder="tile map y" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="15">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row text-center pt-2">
+                    <div class="col-4">
+                      <div class="input-group input-group-sm">
+                        <input type="text" id="tile_set_x" placeholder="tile set x" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="6">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="input-group input-group-sm">
+                        <input type="text" id="tile_set_y" placeholder="tile set y" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="10">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="input-group input-group-sm">
+                        <input type="text" id="tile_size" placeholder="tile size" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="16">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row pt-2">
+                    <div class="col-12">
+                      <button type="button" id="saveSettings" class="btn btn-outline-primary">Save</button>
                     </div>
                   </div>
                 </div>
@@ -148,12 +83,75 @@
             </div>
           </div>
         </div>
-        <div class="col-8 text-center">
-          <canvas id="tileMap"></canvas>
+        <div class="container ml-2 mt-2 p-2" id="settingsContainer">
+          <div class="accordion" id="accordionTileSet">
+            <div class="card border-0 noBackground">
+              <div class="card-header bg-primary m-0 p-1 rounded" id="headingOne">
+                <h2 class="mb-0">
+                <button class="btn btn-block text-left text-white" type="button" data-toggle="collapse" data-target="#collapseTileSet" aria-expanded="true" aria-controls="collapseTileSet">
+                Tile Set
+                </button>
+                </h2>
+              </div>
+              <div id="collapseTileSet" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionTileSet">
+                <div class="card-body noBackground">
+                  <div class="row text-center p-2">
+                    <div class="col-12">
+                      <canvas id="tileSet"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container ml-2 mt-2 p-2" id="settingsContainer">
+          <button type="button" class="btn btn-dark active" id="penButton">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pen" viewBox="0 0 16 16">
+            <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+          </svg>
+          </button>
+          <button type="button" class="btn btn-dark" id="eraserButton">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-eraser" viewBox="0 0 16 16">
+            <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414l-3.879-3.879zM8.746 13.547L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
+          </svg>
+          </button>
+        </div>
+        <div class="container ml-2 mt-2 p-2" id="settingsContainer">
+          <div class="accordion" id="accordionExport">
+            <div class="card border-0 noBackground">
+              <div class="card-header bg-success m-0 p-1 rounded" id="headingExport">
+                <h2 class="mb-0">
+                <button class="btn btn-block text-left text-white" type="button" data-toggle="collapse" data-target="#collapseExport" aria-expanded="true" aria-controls="collapseExport">
+                Export
+                </button>
+                </h2>
+              </div>
+              <div id="collapseExport" class="collapse" aria-labelledby="headingExport" data-parent="#accordionExport">
+                <div class="card-body noBackground">
+                  <div class="row text-center pt-2">
+                    <div class="col-12">
+                      <div class="input-group input-group-sm">
+                        <input type="text" id="exportName" placeholder="map.json" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="map.json">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row pt-2">
+                    <div class="col-12">
+                      <button type="button" id="exportButton" class="btn btn-outline-success">Export</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="col-8 text-center">
+        <canvas id="tileMap"></canvas>
+      </div>
     </div>
-    <footer class="footer text-center text-lg-start mt-2 darkBackground">
+    <footer class="footer text-center text-lg-start darkBackground" id="footer">
       <div class="text-center p-3 copyrightText">
         © 2021 Copyright:
         <a class="byText" href="https://mdbootstrap.com/">By Lautaro Navarro</a>
