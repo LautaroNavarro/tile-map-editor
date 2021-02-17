@@ -81,7 +81,7 @@ window.addEventListener("load", function(event) {
 
     display.context.canvas.addEventListener('mousemove',
         (e) => {
-            if (game.selectedTile) {
+            if (game.selectedTile && game.selectedTool == 'PEN') {
                 render();
                 display.drawTile(
                     game.tileSetImage,
@@ -102,17 +102,14 @@ window.addEventListener("load", function(event) {
 
     display.context.canvas.addEventListener('click',
         (e) => {
-            if (game.selectedTile) {
-                game.updateMap(
-                    controller.handleMouseMove(e, display.context.canvas, display.buffer.canvas),
-                );
-                display.render();
-            }
+            game.updateMap(
+                controller.handleMouseMove(e, display.context.canvas, display.buffer.canvas),
+            );
+            render();
         }
     );
 
     const saveSettings = document.getElementById('saveSettings');
-
     saveSettings.addEventListener('click', async() => {
         let settings = await controller.processSettings();
         game.updateSettings(settings, (img) => {
@@ -129,8 +126,22 @@ window.addEventListener("load", function(event) {
         renderTileSet();
     });
 
-    const exportButton = document.getElementById('exportButton');
+    const penButton = document.getElementById('penButton');
+    const eraserButton = document.getElementById('eraserButton');
 
+    penButton.addEventListener('click', () => {
+        game.selectPen();
+        penButton.classList = "btn btn-dark active";
+        eraserButton.classList = "btn btn-dark";
+    });
+
+    eraserButton.addEventListener('click', () => {
+        game.selectEraser();
+        penButton.classList = "btn btn-dark";
+        eraserButton.classList = "btn btn-dark active";
+    });
+
+    const exportButton = document.getElementById('exportButton');
     exportButton.addEventListener('click', () => {
         let exportName = controller.getExportName();
         game.exportMap(exportName);

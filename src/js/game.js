@@ -7,7 +7,7 @@ class Game {
     tileSetY = 10;
     tileSetImage = null;
     tileSize = 16;
-    selectedTool = null;
+    selectedTool = 'PEN';
     selectedTile = null;
 
     exportMap(exportName) {
@@ -25,8 +25,22 @@ class Game {
         document.body.removeChild(element);
     }
 
+    selectEraser() {
+        this.selectedTool = 'ERASER';
+    }
+
+    selectPen() {
+        this.selectedTool = 'PEN';
+    }
+
     updateMap(mouse) {
-        this.map[(mouse.y * this.tilesX) + mouse.x] = `${this.selectedTile.x}-${this.selectedTile.y}`
+        let value;
+        if (this.selectedTool == 'PEN') {
+            value = `${this.selectedTile.x}-${this.selectedTile.y}`;
+        } else {
+            value = null;
+        }
+        this.map[(mouse.y * this.tilesX) + mouse.x] = value;
     }
 
     getWidth() {
@@ -46,7 +60,6 @@ class Game {
     }
 
     updateSettings(settings, callback) {
-        debugger;
         let img = new Image();
         img.onload = () => {
             callback(img)
@@ -71,7 +84,4 @@ class Game {
         this.tileSize = parseInt(settings.tileSize);
     }
 
-    update() {
-        // TODO: Implement
-    }
 }

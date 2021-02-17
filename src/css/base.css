@@ -31,3 +31,15 @@ canvas {
     background-color: #2a2a2a;
     border-radius: 5px;
 }
+
+.darkBackground {
+    background-color: #1d1d1d !important;
+}
+
+.copyrightText {
+    color: #b5b5b5 !important;
+}
+
+.byText {
+    color: #f5f5f5 !important;
+}
