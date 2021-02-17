@@ -1,6 +1,10 @@
 # tile-map-editor
 This is an online tile map editor. With this tool you are going to be able to design your game levels.
 
+## Deploy
+This app is deployed to Heroku
+[You can test it here](https://tile-map-editor.herokuapp.com/index.html)
+
 ## Functionalities
 
 * Upload your own tile set. With your own custom dimensions
