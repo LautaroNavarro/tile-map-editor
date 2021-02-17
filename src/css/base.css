@@ -43,3 +43,7 @@ canvas {
 .byText {
     color: #f5f5f5 !important;
 }
+
+.wrapper {
+    height:100%;
+}
