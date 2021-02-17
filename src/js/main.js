@@ -3,12 +3,12 @@ window.addEventListener("load", function(event) {
     "use strict";
 
     let setWidthAndHeight = () => {
-      // Recalculate width and height for both canvas
-      mapDisplay.buffer.canvas.height = mapCreator.getHeight();
-      mapDisplay.buffer.canvas.width = mapCreator.getWidth();
+        // Recalculate width and height for both canvas
+        mapDisplay.buffer.canvas.height = mapCreator.getHeight();
+        mapDisplay.buffer.canvas.width = mapCreator.getWidth();
 
-      tileSetDisplay.buffer.canvas.height = mapCreator.getTileSetHeight();
-      tileSetDisplay.buffer.canvas.width = mapCreator.getTileSetWidth();
+        tileSetDisplay.buffer.canvas.height = mapCreator.getTileSetHeight();
+        tileSetDisplay.buffer.canvas.width = mapCreator.getTileSetWidth();
     }
 
     let resize = () => {
@@ -64,7 +64,9 @@ window.addEventListener("load", function(event) {
     );
 
     // Rerender to erase hover in tile set
-    tileSetDisplay.context.canvas.addEventListener("mouseout", (e) => {render();});
+    tileSetDisplay.context.canvas.addEventListener("mouseout", (e) => {
+        render();
+    });
 
     // Tile selection
     tileSetDisplay.context.canvas.addEventListener('click',
@@ -91,14 +93,16 @@ window.addEventListener("load", function(event) {
     );
 
     // Rerender if mouse is out to erase ghost tile
-    mapDisplay.context.canvas.addEventListener("mouseout", (e) => {render();});
+    mapDisplay.context.canvas.addEventListener("mouseout", (e) => {
+        render();
+    });
 
     // Add the selected tile to the selected map position
     mapDisplay.context.canvas.addEventListener('click', (e) => {
-      mapCreator.updateMap(
-          controller.handleMouseMove(e, mapDisplay.context.canvas, mapDisplay.buffer.canvas),
-      );
-      render();
+        mapCreator.updateMap(
+            controller.handleMouseMove(e, mapDisplay.context.canvas, mapDisplay.buffer.canvas),
+        );
+        render();
     });
 
     // Save settings button
