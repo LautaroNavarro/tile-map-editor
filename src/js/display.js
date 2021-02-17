@@ -39,9 +39,9 @@ class Display {
         );
     };
 
-    drawTileSet(img) {
+    drawTileSet(image) {
         this.buffer.drawImage(
-            img,
+            image,
             0,
             0
         );
@@ -71,9 +71,9 @@ class Display {
         this.buffer.fillRect(Math.floor(x), Math.floor(y), width, height);
     }
 
-    drawTile(img, mouse, destination_x, destination_y) {
+    drawTile(image, mouse, destination_x, destination_y) {
         this.buffer.drawImage(
-            img,
+            image,
             destination_x * this.tile_sheet.tile_size,
             destination_y * this.tile_sheet.tile_size,
             this.tile_sheet.tile_size,
